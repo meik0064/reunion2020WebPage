@@ -1,0 +1,11 @@
+<div *ngIf="event">
+
+    <h2>{{event.header | uppercase}} Details</h2>
+    <div><span>id: </span>{{event.total_capacity}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="event.header" placeholder="name"/>
+      </label>
+    </div>
+    <button (click)="goBack()">go back</button>
+  </div>

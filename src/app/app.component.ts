@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'reunion2020WebPage';
+export class AppComponent implements OnInit {
+  title = 'GenforeningenPrototype';
+  public innerWidth: any;
+
+  ngOnInit() {
+      this.innerWidth = window.innerWidth;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+  }
 }
