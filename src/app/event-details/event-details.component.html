@@ -1,7 +1,7 @@
 <div *ngIf="event">
 
     <h2>{{event.header | uppercase}} Details</h2>
-    <div><span>id: </span>{{event.total_capacity}}</div>
+    <div><span>id: </span>{{event.id}}</div>
     <div>
       <label>name:
         <input [(ngModel)]="event.header" placeholder="name"/>
