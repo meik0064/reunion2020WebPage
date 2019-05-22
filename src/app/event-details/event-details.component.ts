@@ -14,7 +14,7 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private eventService: EventService,
-    private location: Location) { }
+    private location: Location,) { }
 
   ngOnInit() {
     this.getEvent();

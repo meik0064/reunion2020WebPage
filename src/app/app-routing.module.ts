@@ -7,7 +7,6 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: 'events', component: EventsComponent},
-  {path: 'events/4', component: EventDetailsComponent, canActivate: [AuthGuard]},
   {path: 'events/:id', component: EventDetailsComponent},
   {path: 'login', component: LoginComponent},
   {path: '', redirectTo: '/events', pathMatch: 'full' },
