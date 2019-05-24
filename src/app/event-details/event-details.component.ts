@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-  @Input() event: Event;
+  event: Event;
 
   constructor(private route: ActivatedRoute,
     private eventService: EventService,
@@ -21,13 +21,11 @@ export class EventDetailsComponent implements OnInit {
   }
 
   getEvent(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.eventService.getEvent(id)
       .subscribe(event => this.event = event);
       console.log(id);
   }
-
-
 
 
   goBack(): void {

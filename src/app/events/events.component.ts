@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { Event } from "../models/event";
-import { EVENTS } from "../models/mock-events";
 import { EventService } from '../services/event.service';
 
 @Component({
@@ -10,12 +9,22 @@ import { EventService } from '../services/event.service';
 })
 export class EventsComponent implements OnInit {
 
+  @Output() event : EventEmitter<Event>;
+  
+  private events : Event[];
+  private selectedEvent : Event;
+
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.getEvents();
+    this.event = new EventEmitter<Event>();
+    this.getEvents();    
   }
-  events : Event[];
+  
+  onGoToEvent(event){
+    
+  }
+
 
   getEvents(): void {
     this.eventService.getEvents().subscribe(events => this.events = events)

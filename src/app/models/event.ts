@@ -1,8 +1,13 @@
 export class Event {
-    target_group: string;
-    header: string;
-    total_capacity: string;
+    _id: string;
+    title: string;
+    date: string;
     description: string;
-    start_date: string;
-    id: number;
+    location: string;
+    targetGroupMin: Number;
+    targetGroupMax: Number;
+    imageId: string;
+    status: string;
+    __v: string;
+
   }
