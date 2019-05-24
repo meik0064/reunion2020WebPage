@@ -1,11 +1,11 @@
 <div *ngIf="event">
 
-    <h2>{{event.header | uppercase}} Details</h2>
-    <div><span>id: </span>{{event.id}}</div>
-    <div>
-      <label>name:
-        <input [(ngModel)]="event.header" placeholder="name"/>
-      </label>
-    </div>
-    <button (click)="goBack()">go back</button>
+  <h2>{{event.title | uppercase}} Details</h2>
+  <div><span>id: </span>{{event._id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="event.title" placeholder="name" />
+    </label>
   </div>
+  <button (click)="goBack()">go back</button>
+</div>

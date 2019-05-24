@@ -1,29 +1,32 @@
 <div class="container-fluid">
-    <div class="row" style="background-color:#E9573D">    
-      <div class="col-2">
+  <div class="row" style="background-color:#E9573D">
+    <div class="col-2">
 
 
-        <div class="col-2 text-right" style="padding-right:64px;" *ngIf="innerWidth >= 1200">
-          <p class="lead" style="padding-top:32px;"> <a class="text-light text-decoration-none" routerLink="/login" >Login</a>
-        </div>
-
-
+      <div class="col-2 text-right" style="padding-right:64px;" *ngIf="innerWidth >= 1200">
+        <p class="lead" style="padding-top:32px;"> <a class="text-light text-decoration-none"
+            routerLink="/login">Login</a>
       </div>
-      <div class="col-8 text-center mt-3 mb-3" style="display:block;padding:1rem;width:380px;margin:0 auto" *ngIf="innerWidth >= 1200">
-        <a routerLink="/events"><img style="max-width:500px;max-height:500px" src="assets/img/genforening-logo.svg" alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
-      </div>
-      <div class="col-10 text-center mt-3 mb-3 mr-3" style="display:block;padding:1rem;width:380px;margin:0 auto" *ngIf="innerWidth < 1200">
-        <a routerLink="/events"><img src="assets/img/genforening-logo-small.svg" alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
-      </div>  
 
-      <div class="col-2 text-right" style="padding-right:64px;" *ngIf="innerWidth >= 1200">     	
-        <p class="lead" style="padding-top:32px;"> <a class="text-light text-decoration-none" href="/">DK /</a>
-        <a class="text-light text-decoration-none" href="/"> English</a><br>
-        <a class="text-light text-decoration-none" href="/">/ Deutsch</a></p>       
-      </div>
+
     </div>
-          <router-outlet></router-outlet>
-  </div> 
-    <br>
-    
-    
+    <div class="col-8 text-center mt-3 mb-3" style="display:block;padding:1rem;width:380px;margin:0 auto"
+      *ngIf="innerWidth >= 1200">
+      <a routerLink="/events"><img style="max-width:500px;max-height:500px" src="assets/img/genforening-logo.svg"
+          alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
+    </div>
+    <div class="col-10 text-center mt-3 mb-3 mr-3" style="display:block;padding:1rem;width:380px;margin:0 auto"
+      *ngIf="innerWidth < 1200">
+      <a routerLink="/events"><img src="assets/img/genforening-logo-small.svg"
+          alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
+    </div>
+
+    <div class="col-2 text-right" style="padding-right:64px;" *ngIf="innerWidth >= 1200">
+      <p class="lead" style="padding-top:32px;"> <a class="text-light text-decoration-none" href="/">DK /</a>
+        <a class="text-light text-decoration-none" href="/"> English</a><br>
+        <a class="text-light text-decoration-none" href="/">/ Deutsch</a></p>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+<br>

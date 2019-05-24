@@ -10,22 +10,22 @@ import { Location } from '@angular/common';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-  event: Event;
+  private event: Event;
 
   constructor(private route: ActivatedRoute,
-    private eventService: EventService,
-    private location: Location,) { }
+              private eventService: EventService,
+              private location: Location) {
+
+  }
 
   ngOnInit() {
-    this.getEvent();
+    console.log('in event-details oninit');
+    this.eventService.getEvent(this.route.snapshot.paramMap.get('id')).subscribe(event => this.event = event);
+    //this.getEvent();
   }
 
-  getEvent(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.eventService.getEvent(id)
-      .subscribe(event => this.event = event);
-      console.log(id);
-  }
+  /*getEvent(): void {    
+  }*/
 
 
   goBack(): void {

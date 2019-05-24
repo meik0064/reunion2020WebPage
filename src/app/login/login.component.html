@@ -6,7 +6,7 @@
         <button type="submit" class="btn btn-primary btn-block btn-large"
             [disabled]="!loginFormParent.valid">Login</button>
 
-            <br>
+        <br>
         <div *ngIf="(username.invalid && (username.dirty || username.touched))" class="alert alert-danger">
             <div *ngIf="username.errors">
                 <div *ngIf="username.errors.required">
