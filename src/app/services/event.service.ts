@@ -24,8 +24,7 @@ export class EventService {
   }
 
   getEventsMultiPage(page:number): Observable<Event[]> {
-    let position = page * 50;
-    return this.httpClient.get<Event[]>(this.eventsURL, { withCredentials: true, params: {position: position.toString()} }).pipe(catchError(this.handleError));
+    return this.httpClient.get<Event[]>(this.eventsURL, { withCredentials: true, params: {position: page.toString()} }).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
