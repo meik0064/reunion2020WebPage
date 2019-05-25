@@ -2,9 +2,10 @@
 
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav style="background-color: #E9573D" #sidenav mode="over" class="admin-sidenav" [fixedInViewport]="true"
-      [fixedTopGap]="128" [fixedBottomGap]="0" [(opened)]='isSideNavOpen'>
+      [fixedTopGap]="100" [fixedBottomGap]="0" [(opened)]='isSideNavOpen'>
 
-      <div class="col-sm-12 text-center">
+      <br>
+      <div class="col-sm-12 text-center mt-3">
         <p class="h3 text-light"><strong>Administration</strong></p>
       </div>
       <br>
@@ -24,17 +25,15 @@
           </a>
         </p>
       </div>
-      
-
 
       <mat-toolbar class="footer">
-          <div class="col-sm-12">
-              <p class="h4">
-                <a (click)="toggleSideNav();logOut()" routerLink='/' class="text-light text-decoration-none">
-                  Log Out
-                </a>
-              </p>
-            </div>
+        <div class="col-12">
+          <p class="h4">
+            <a (click)="toggleSideNav();logOut()" routerLink='/' class="text-light text-decoration-none">
+              Log Out
+            </a>
+          </p>
+        </div>
       </mat-toolbar>
 
     </mat-sidenav>
@@ -47,16 +46,15 @@
           <div class="col-2">
             <div class="row">
 
-              <div class="col-12 mt-3 text-center" *ngIf="!isLoggedIn()">
+              <div class="col-12 mt-3 text-center" *ngIf="isLoggedIn()">
                 <p class="lead" style="padding-top:16px;">
                   <a class="text-light text-decoration-none" routerLink="/login"><img
                       style="max-width:32;max-height:64px" src="assets/img/login.png" /></a>
                 </p>
               </div>
 
-              <div class="col-4" *ngIf="isLoggedIn()">
-                <div id="nav-icon1" [className]="isSideNavOpen ? 'open' : ''"
-                  (click)="toggleSideNav()">
+              <div class="col-4 ml-3" *ngIf="!isLoggedIn()">
+                <div id="nav-icon1" [className]="isSideNavOpen ? 'open' : ''" (click)="toggleSideNav()">
                   <span></span>
                   <span></span>
                   <span></span>
@@ -73,8 +71,9 @@
                 alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
           </div>
 
-          <div class="col-sm text-center mt-3 mb-3 mr-3" style="display:block;padding:1rem;width:380px;margin:0 auto"
-            *ngIf="innerWidth < 1200">
+          <div class="col-8 text-center ml-3" style="display:block;padding:1rem;width:380px;margin:0 auto" *ngIf="innerWidth < 1200">
+            <!--</div>style="display:block;padding:1rem;width:380px;margin:0 auto"-->
+
             <a routerLink="/events"><img src="assets/img/genforening-logo-small.svg"
                 alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
           </div>
@@ -102,10 +101,5 @@
       <p class="lead text-center alert alert-danger">Footer</p>
     </div>
   </mat-toolbar>
-
-
-
-
-
 
 </ng-container>
