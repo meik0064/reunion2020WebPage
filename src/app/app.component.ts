@@ -31,7 +31,11 @@ export class AppComponent implements OnInit {
   }
 
   isLoggedIn() {
-    return this.authService.isLoggedIn();
+    let loggedIn = this.authService.isLoggedIn();
+    if(!loggedIn){
+      this.isSideNavOpen = false;
+    }
+    return loggedIn;
   }
 
   logOut(){
