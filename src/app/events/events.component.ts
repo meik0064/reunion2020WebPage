@@ -9,12 +9,18 @@ import { EventService } from '../services/event.service';
 })
 export class EventsComponent implements OnInit {
   private events: Event[];
+  private page: number;
 
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
     this.eventService.getEvents().subscribe(events => this.events = events);
+    this.page = 1;
   }
 
+
+  onNextClicked(pageNumber:number){
+    this.eventService.getEventsMultiPage(pageNumber).subscribe(events => this.events = events);
+  }
 
 }
