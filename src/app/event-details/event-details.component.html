@@ -1,23 +1,29 @@
-<div class="col-8 text-center mt-3 mb-3" style="margin:0 auto; background-color: lightgray; outline: outset #E9573D" *ngIf="event">
-<br>
-  <p><img src="https://i.ytimg.com/vi/9tzJO7ATcjM/maxresdefault.jpg" height="250" width="600"></p>
-  <h2>{{event.title}}</h2>
-  <div>
-    <div class="row">
-      <div class="col-6 offset-2 text-center mt-3 mb-3" >
-        <p>{{event.description}}</p>
-      </div>
-      <div class="col-2 offset-1 mt-3 mb-3" style="text-align: left">
-          <small>{{event.targetGroupMin}} - {{event.targetGroupMax}}y</small>
-          <br><br>
-          <small> {{event.location}}</small>
-          <br><br>
-          <small>{{event.date}}</small>
-      </div>
+<div class="row event-detail-container">
+  <div class="col-sm-10 offset-1 text-center event-detail" *ngIf="event">
+    <!-- style="margin:0 auto; background-color: lightgray; outline: outset #E9573D"-->
 
+
+    <div class="col-sm event">
+      <p><img src="https://i.ytimg.com/vi/9tzJO7ATcjM/maxresdefault.jpg" height="250" width="600"></p>
+      <h2>{{event.title}}</h2>
+      <div>
+        <div class="row">
+          <div class="col-6 offset-2 text-center mt-3 mb-3">
+            <p>{{event.description}}</p>
+          </div>
+          <div class="col-2 offset-1 mt-3 mb-3" style="text-align: left">
+            <small>{{event.targetGroupMin}} - {{event.targetGroupMax}}y</small>
+            <br><br>
+            <small> {{event.location}}</small>
+            <br><br>
+            <small>{{event.date}}</small>
+          </div>
+
+        </div>
+      </div>
+      <button (click)="goBack()">go back</button>
     </div>
-  </div>
-  <button (click)="goBack()">go back</button>
 
-  <br><br>
+
+  </div>
 </div>

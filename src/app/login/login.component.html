@@ -1,36 +1,46 @@
-<div class="login">
-    <h1>Login</h1>
-    <form [formGroup]="loginFormParent" (ngSubmit)="onSubmit()">
-        <input type="text" name="u" placeholder="Username" formControlName="usernameForm" />
-        <input type="password" name="p" placeholder="Password" formControlName="passwordForm" />
-        <button type="submit" class="btn btn-primary btn-block btn-large"
-            [disabled]="!loginFormParent.valid">Login</button>
+<div class="row login-container">
+    <div class="col-sm-6 offset-3 login-form-1">
+        <div class="login">
+            <h3>Login</h3>
+            <form [formGroup]="loginFormParent" (ngSubmit)="onSubmit()">
 
-        <br>
-        <div *ngIf="(username.invalid && (username.dirty || username.touched))" class="alert alert-danger">
-            <div *ngIf="username.errors">
-                <div *ngIf="username.errors.required">
-                    Username is required.
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Username" formControlName="usernameForm" autocomplete="username"/>
                 </div>
-                <div *ngIf="username.errors.minlength">
-                    Username must be at least 4 characters long.
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" formControlName="passwordForm" autocomplete="current-password"/>
                 </div>
-            </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" [disabled]="!loginFormParent.valid">Login</button>
+                </div>            
 
 
+                <br>
+                <div *ngIf="(username.invalid && (username.dirty || username.touched))" class="alert alert-danger text-center">
+                    <div *ngIf="username.errors">
+                        <div *ngIf="username.errors.required">
+                            Username is required.
+                        </div>
+                        <div *ngIf="username.errors.minlength">
+                            Username must be at least 4 characters long.
+                        </div>
+                    </div>
+
+
+                </div>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger text-center">
+                    <div *ngIf="password.errors">
+                        <div *ngIf="password.errors.required">
+                            Password is required.
+                        </div>
+
+                        <div *ngIf="password.errors.minlength">
+                            Password must be at least 4 characters long.
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div *ngIf="loginFailed" class="alert alert-danger text-center">{{errorMessage}}</div>
         </div>
-        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-            <div *ngIf="password.errors">
-                <div *ngIf="password.errors.required">
-                    Password is required.
-                </div>
-
-                <div *ngIf="password.errors.minlength">
-                    Password must be at least 4 characters long.
-                </div>
-            </div>
-        </div>
-    </form>
+    </div>
 </div>
-<button (click)=logon()>login</button>
-<button (click)=logonAlt()>loginAlt</button>

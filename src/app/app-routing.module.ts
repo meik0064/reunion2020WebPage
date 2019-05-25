@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { EventsComponent } from './events/events.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
-import { AuthGuard } from './guards/admin.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [

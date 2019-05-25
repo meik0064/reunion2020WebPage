@@ -1,0 +1,15 @@
+.event-detail-container{
+    margin-top: 2%;
+    margin-bottom: 5%;
+  
+}
+.event-detail{
+    box-shadow: 0 5px 8px 0 #E9573D, 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.event-detail h3{
+    text-align: center;
+    color: #333;
+}
+.event {
+    padding: 2%;
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,15 +8,33 @@ import { Component, OnInit, HostListener } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  private isSideNavOpen: boolean;
   title = 'GenforeningenPrototype';
   public innerWidth: any;
 
+  constructor(private authService: AuthService) {
+
+  }
+
   ngOnInit() {
-      this.innerWidth = window.innerWidth;
+    this.isSideNavOpen = false;
+    this.innerWidth = window.innerWidth;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerWidth = window.innerWidth;
+  }
+
+  toggleSideNav() {
+    this.isSideNavOpen = !this.isSideNavOpen;
+  }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  logOut(){
+    localStorage.removeItem('token');
   }
 }
