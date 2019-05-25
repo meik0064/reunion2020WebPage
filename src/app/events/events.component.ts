@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Event } from "../models/event";
 import { EventService } from '../services/event.service';
 
@@ -15,6 +15,6 @@ export class EventsComponent implements OnInit {
   ngOnInit() {
     this.eventService.getEvents().subscribe(events => this.events = events);
   }
-  
+
 
 }
