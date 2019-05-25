@@ -1,4 +1,4 @@
-export class Event {
+export class ReviewEvent {
     _id: string;
     title: string;
     date: Date;
@@ -8,7 +8,6 @@ export class Event {
     targetGroupMax: Number;
     externLink: string;
     imageId: string;
-    status: string;
     eventContact: { name: string, email: string, phone: string };
     __v: string;
 

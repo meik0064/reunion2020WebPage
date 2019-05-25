@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from "../models/event";
+import { ReviewEvent } from "../models/review-event";
 import { EventService } from "../services/event.service";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CreateEventComponent implements OnInit {
 
-  private event: Event;
+  private event: ReviewEvent;
 
   constructor(private eventService: EventService) { }
 
@@ -24,9 +24,9 @@ export class CreateEventComponent implements OnInit {
         targetGroupMin: null,
         targetGroupMax: null,
         imageId: null,
-        status: null,
-        __v: null
-    
+        externLink: '',
+        eventContact: { name: 'mock-name', email: 'mock@mail.dk', phone: '11223344' },
+        __v: null    
       }
 
   }
@@ -67,15 +67,5 @@ export class CreateEventComponent implements OnInit {
   get location() { return this.eventForm.get('locationFormControl'); }
   get targetGroupMin() { return this.eventForm.get('targetGroupMinFormControl'); }
   get targetGroupMax() { return this.eventForm.get('targetGroupMaxFormControl'); }
-
-
-
-
-
-
-
-
-
-
-
+  
 }
