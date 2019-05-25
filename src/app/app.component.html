@@ -46,14 +46,14 @@
           <div class="col-2">
             <div class="row">
 
-              <div class="col-12 mt-3 text-center" *ngIf="isLoggedIn()">
+              <div class="col-12 mt-3 text-center" *ngIf="!isLoggedIn()">
                 <p class="lead" style="padding-top:16px;">
                   <a class="text-light text-decoration-none" routerLink="/login"><img
                       style="max-width:32;max-height:64px" src="assets/img/login.png" /></a>
                 </p>
               </div>
 
-              <div class="col-4 ml-3" *ngIf="!isLoggedIn()">
+              <div class="col-4 ml-3" *ngIf="isLoggedIn()">
                 <div id="nav-icon1" [className]="isSideNavOpen ? 'open' : ''" (click)="toggleSideNav()">
                   <span></span>
                   <span></span>
