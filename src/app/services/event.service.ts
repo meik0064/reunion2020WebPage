@@ -20,9 +20,12 @@ export class EventService {
   }
 
   getEvents(): Observable<Event[]> {
-    var smthing = this.httpClient.get<Event[]>(this.eventsURL, { withCredentials: true }).pipe(catchError(this.handleError));
-    //console.log('in service getEvents\n' + smthing);
-    return smthing;
+    return this.httpClient.get<Event[]>(this.eventsURL, { withCredentials: true }).pipe(catchError(this.handleError));
+  }
+
+  getEventsMultiPage(page:number): Observable<Event[]> {
+    let position = page * 50;
+    return this.httpClient.get<Event[]>(this.eventsURL, { withCredentials: true, params: {position: position.toString()} }).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
