@@ -16,14 +16,15 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     this.eventService.getEvents().subscribe(events => this.events = events);
-    this.page = 1;
+    this.page = 0;
     this.canActivateButton = true;
   }
 
 
-  onNextClicked(pageNumber:number){
+  async onNextClicked(){
     this.canActivateButton = false;
-    this.eventService.getEventsMultiPage(pageNumber).subscribe(events => this.events = events);
+    this.page +=1;
+    await this.eventService.getEventsMultiPage(this.events.length * this.page).subscribe(events => this.events = events);
     this.canActivateButton = true;
   }
 
