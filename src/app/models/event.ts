@@ -1,7 +1,7 @@
 export class Event {
     _id: string;
     title: string;
-    date: string;
+    date: Date;
     description: string;
     location: string;
     targetGroupMin: Number;

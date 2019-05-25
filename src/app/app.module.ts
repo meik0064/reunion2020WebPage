@@ -13,13 +13,15 @@ import { AuthGuard } from './guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { MatNativeDateModule } from '@angular/material';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsComponent,
     EventDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,
