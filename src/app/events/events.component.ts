@@ -42,7 +42,7 @@ export class EventsComponent implements OnInit {
       this.canActivateButtonNext = true;
       this.canActivateButtonPrevious = true;
     }
-    console.log(this.page + "   " + this.events.length + "       nextclicked")
+    console.log(this.page + "   " + this.events.length + "       nextclicked");
   }
 
   getEventsMultiPage(page: number) {
