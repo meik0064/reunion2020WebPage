@@ -43,13 +43,19 @@
       <div class="container-fluid">
         <div class="row" style="background-color:#E9573D">
 
-          <div class="col-2">
+          <div class="col-3">
             <div class="row">
 
-              <div class="col-12 mt-3 text-center" *ngIf="!isLoggedIn()">
+              <div class="col-5 mt-3 text-center" *ngIf="!isLoggedIn()">
                 <p class="lead" style="padding-top:16px;">
                   <a class="text-light text-decoration-none" routerLink="/login"><img
                       style="max-width:32;max-height:64px" src="assets/img/login.png" /></a>
+                </p>
+              </div>
+              <div class="col-2 mt-3 text-center" *ngIf="!isLoggedIn()">
+                <p class="lead" style="padding-top:16px;">
+                  <a class="text-light text-decoration-none" routerLink="/createEvent"><img
+                      style="max-width:32;max-height:64px"  />Host Event</a>
                 </p>
               </div>
 
@@ -65,7 +71,7 @@
           </div>
 
 
-          <div class="col-8 text-center mt-3 mb-3" style="display:block;padding:1rem;width:380px;margin:0 auto"
+          <div class="col-6 text-center mt-3 mb-3" style="display:block;padding:1rem;width:380px;margin:0 auto"
             *ngIf="innerWidth >= 1200">
             <a routerLink="/events"><img style="max-width:500px;max-height:500px" src="assets/img/genforening-logo.svg"
                 alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
