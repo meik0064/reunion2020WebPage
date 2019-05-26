@@ -2,11 +2,11 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ReviewEvent } from 'src/app/models/review-event';
 
 @Component({
-  selector: 'app-preview',
-  templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.css']
+  selector: 'app-event',
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.component.css']
 })
-export class PreviewComponent implements OnInit {
+export class EventComponent implements OnInit {
   private innerWidth: any;
 
   @Input() private event: ReviewEvent;
@@ -14,7 +14,7 @@ export class PreviewComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.innerWidth = window.innerWidth;
   }
 

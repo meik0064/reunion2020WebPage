@@ -10,8 +10,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-  private innerWidth: any;
   private event: Event;
+  private imgURL: string
 
   constructor(private route: ActivatedRoute,
               private eventService: EventService,
@@ -20,16 +20,11 @@ export class EventDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.innerWidth = window.innerWidth;
+    this.imgURL = 'https://i.ytimg.com/vi/9tzJO7ATcjM/maxresdefault.jpg';
     this.eventService.getEvent(this.route.snapshot.paramMap.get('id')).subscribe(event => this.event = event);
   }
 
   goBack(): void {
     this.location.back();
-  }
-  
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.innerWidth = window.innerWidth;
-  }
+  }  
 }
