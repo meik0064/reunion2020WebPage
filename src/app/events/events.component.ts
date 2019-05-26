@@ -26,18 +26,18 @@ export class EventsComponent implements OnInit {
   onPreviousClicked() {
     this.canActivateButtonPrevious = false;
     this.page -= 1;
-    this.getEventsMultiPage(this.page)
+    this.getEventsMultiPage(this.page);
     if (this.page >= 1) {
       this.canActivateButtonPrevious = true;
       this.canActivateButtonNext = true;
     }
-    console.log(this.page + "   " + this.events.length + "       previousclicked")
+    console.log(this.page + "   " + this.events.length + "       previousclicked");
   }
   onNextClicked() {
     this.canActivateButtonNext = false;
     this.page += 1;
-    this.getEventsMultiPage(this.page)
-    console.log(this.events.length + "       nextclicked")
+    this.getEventsMultiPage(this.page);
+    console.log(this.events.length + "       nextclicked");
     if (this.events.length >= 3) {
       this.canActivateButtonNext = true;
       this.canActivateButtonPrevious = true;
