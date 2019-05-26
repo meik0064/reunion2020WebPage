@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Event } from "../models/event";
 import { EventService } from "../services/event.service";
 import { ActivatedRoute } from '@angular/router';
@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
+  private innerWidth: any;
   private event: Event;
 
   constructor(private route: ActivatedRoute,
@@ -19,10 +20,16 @@ export class EventDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
     this.eventService.getEvent(this.route.snapshot.paramMap.get('id')).subscribe(event => this.event = event);
   }
 
   goBack(): void {
     this.location.back();
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
   }
 }

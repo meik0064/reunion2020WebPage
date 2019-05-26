@@ -1,36 +1,40 @@
 <div class="row mt-3">
-  <div class="col-12 mt-3 text-center">
-    <h1 class="display-4">Events</h1>
-  </div>
+    <div class="col-12 mt-3 text-center">
+        <h1 class="display-4">Events</h1>
+    </div>
 </div>
 
 <div class="row">
-  
-  <div class="col-sm-12 col-md-6 offset-md-3">
-    <div class="list-group">
+
+    <div class="col-sm-12 col-md-6 offset-md-3">
+        <div class="list-group">
 
 
-      <a class="list-group-item list-group-item-action" *ngFor="let event of events" routerLink="/events/{{event._id}}">
-        <div class="d-flex w-33 justify-content-between mt-1 mb-3">
-          <small>Target groups: {{event.targetGroupMin}} - {{event.targetGroupMax}}y</small>
-          <h5>{{event.title}}</h5>
-          <small>Number of participants: {{event.total_capacity}}</small>
-        </div>
-        <div class="d-flex w-100 justify-content-between">
-          <p class="mb-1">{{event.description}}</p>
-          <small>Event start: {{event.date}}</small>
-        </div>
-        <div>
-          Event ID: {{event._id}}
-        </div>
-      </a>
-      <br>
-      <button [enabled]="canActivateButton" (click)="onNextClicked()">next page</button>
+            <a class="list-group-item list-group-item-action" *ngFor="let event of events"
+                routerLink="/events/{{event._id}}">
 
+                <div class="d-flex w-100 justify-content-center">
+                    <p class="h5">{{event.title}}</p>
+                </div>
+                <div class="d-flex w-33 justify-content-between mt-1 mb-3">
+                    <small>Age group: {{event.targetGroupMin}} - {{event.targetGroupMax}}y</small>
+                    <small>Number of participants: {{event.total_capacity}}</small>
+                </div>
+                <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">{{event.description}}</p>
+                    <small>Event start: {{event.date}}</small>
+                </div>
+                <div>
+                    Event ID: {{event._id}}
+                </div>
+            </a>
+            
+            <br>
+            <button [disabled]="!canActivateButton" (click)="onNextClicked()">next page</button>
+
+        </div>
+    </div>
+    <div class="col-3">
 
     </div>
-  </div>
-  <div class="col-3">
-
-  </div>
 </div>

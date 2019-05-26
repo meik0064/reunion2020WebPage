@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, HostListener } from '@angular/core';
 import { Event } from "../models/event";
 import { EventService } from '../services/event.service';
 
@@ -20,12 +20,10 @@ export class EventsComponent implements OnInit {
     this.canActivateButton = true;
   }
 
-
   async onNextClicked(){
     this.canActivateButton = false;
     this.page +=1;
     await this.eventService.getEventsMultiPage(this.events.length * this.page).subscribe(events => this.events = events);
     this.canActivateButton = true;
   }
-
 }

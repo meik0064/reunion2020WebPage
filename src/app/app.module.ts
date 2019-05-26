@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { MatNativeDateModule } from '@angular/material';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { PreviewComponent } from './create-event/preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
     EventsComponent,
     EventDetailsComponent,
     LoginComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,

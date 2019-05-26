@@ -1,0 +1,46 @@
+<div class="row event-detail-container" *ngIf="event.title != null">
+  <div class="col-sm-12 col-md-10 offset-md-1 text-center event-detail" *ngIf="event">
+    <!--style="margin:0 auto; background-color: lightgray; outline: outset #E9573D"-->
+
+    <div class="row">
+      <div class="col-sm-12 event">
+
+        <div class="row" *ngIf="innerWidth >= 1000">
+          <div class="col-sm-12">
+            <p><img [src]="imgURL" height="250px" *ngIf="imgURL"></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <h2>{{event.title}}</h2>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-1 text-center mt-3 mb-3">
+            <p class="h5">{{event.description}}</p>
+          </div>
+
+          <div class="col-sm-2 offset-sm-1 text-right mt-3 mb-3">
+
+            <p class="lead"><small>{{event.targetGroupMin}} - {{event.targetGroupMax}}y</small></p>
+
+            <br><br>
+
+            <p class="lead"><small>{{event.location}}</small></p>
+
+            <br><br>
+
+            <p class="lead"><small>{{event.date}}</small></p>
+
+            <button (click)="goBack()">go back</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
