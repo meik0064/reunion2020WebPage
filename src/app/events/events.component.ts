@@ -10,20 +10,43 @@ import { EventService } from '../services/event.service';
 export class EventsComponent implements OnInit {
   private events: Event[];
   private page: number;
-  private canActivateButton: boolean;
+  private canActivateButtonPrevious: boolean;
+  private canActivateButtonNext: boolean;
 
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
     this.eventService.getEvents().subscribe(events => this.events = events);
     this.page = 0;
-    this.canActivateButton = true;
+    this.canActivateButtonPrevious = false;
+    this.canActivateButtonNext = true;
   }
 
-  async onNextClicked(){
-    this.canActivateButton = false;
-    this.page +=1;
-    await this.eventService.getEventsMultiPage(this.events.length * this.page).subscribe(events => this.events = events);
-    this.canActivateButton = true;
+
+  onPreviousClicked() {
+    this.canActivateButtonPrevious = false;
+    this.page -= 1;
+    this.getEventsMultiPage(this.page)
+    if (this.page >= 1) {
+      this.canActivateButtonPrevious = true;
+      this.canActivateButtonNext = true;
+    }
+    console.log(this.page + "   " + this.events.length + "       previousclicked")
   }
+  onNextClicked() {
+    this.canActivateButtonNext = false;
+    this.page += 1;
+    this.getEventsMultiPage(this.page)
+    console.log(this.events.length + "       nextclicked")
+    if (this.events.length >= 3) {
+      this.canActivateButtonNext = true;
+      this.canActivateButtonPrevious = true;
+    }
+    console.log(this.page + "   " + this.events.length + "       nextclicked")
+  }
+
+  getEventsMultiPage(page: number) {
+    this.eventService.getEventsMultiPage(this.events.length * page).subscribe(events => this.events = events);
+  }
+
 }

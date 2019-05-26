@@ -30,7 +30,8 @@
             </a>
             
             <br>
-            <button [disabled]="!canActivateButton" (click)="onNextClicked()">next page</button>
+            <button [disabled]="!canActivateButtonPrevious" (click)="onPreviousClicked()">Previous page</button>
+            <button [disabled]="!canActivateButtonNext" (click)="onNextClicked()">next page</button>
 
         </div>
     </div>
