@@ -15,7 +15,7 @@ export class EventComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {    
-    this.innerWidth = window.innerWidth;
+    this.innerWidth = window.innerWidth;  
   }
 
   @HostListener('window:resize', ['$event'])

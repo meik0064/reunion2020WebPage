@@ -1,16 +1,17 @@
 <div class="row mt-3">
+    <div class="col-sm-12" *ngIf='errorMessage'>
+        <p class="lead text-center alert alert-danger">{{errorMessage}}</p>
+    </div>
     <div class="col-12 mt-3 text-center">
         <h1 class="display-4">Events</h1>
     </div>
 </div>
 
 <div class="row">
+    <div class="col-sm-12 col-md-8 offset-md-2">
 
-    <div class="col-sm-12 col-md-6 offset-md-3">
         <div class="list-group">
-
-
-            <a class="list-group-item list-group-item-action" *ngFor="let event of events"
+            <a class="list-group-item list-group-item-action mb-2" *ngFor="let event of events"
                 routerLink="/events/{{event._id}}">
 
                 <div class="d-flex w-100 justify-content-center">
@@ -28,14 +29,11 @@
                     Event ID: {{event._id}}
                 </div>
             </a>
-            
+
             <br>
             <button [disabled]="!canActivateButtonPrevious" (click)="onPreviousClicked()">Previous page</button>
             <button [disabled]="!canActivateButtonNext" (click)="onNextClicked()">next page</button>
 
         </div>
-    </div>
-    <div class="col-3">
-
     </div>
 </div>

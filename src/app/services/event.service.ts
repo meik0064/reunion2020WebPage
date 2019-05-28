@@ -8,7 +8,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
   providedIn: 'root'
 })
 export class EventService {
-
   private eventsURL = 'https://genforeningen-api.azurewebsites.net/events';
 
   constructor(private httpClient: HttpClient) { }
@@ -43,7 +42,7 @@ export class EventService {
         errorString = 'Unauthorized';
       } else if(error.status === 500){
         errorString = 'Internal Server Error';
-      }
+      } 
     }
     // return an observable with a user-facing error message
     return throwError(errorString);

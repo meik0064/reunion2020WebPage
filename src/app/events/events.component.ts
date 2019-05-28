@@ -8,6 +8,7 @@ import { EventService } from '../services/event.service';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
+  private errorMessage: string;
   private events: Event[];
   private page: number;
   private canActivateButtonPrevious: boolean;
@@ -16,12 +17,18 @@ export class EventsComponent implements OnInit {
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.eventService.getEvents().subscribe(events => this.events = events);
+    this.fetchEventList();
     this.page = 0;
     this.canActivateButtonPrevious = false;
     this.canActivateButtonNext = true;
   }
 
+  fetchEventList() {
+    this.eventService.getEvents().subscribe(events => {
+      this.events = events;
+      this.errorMessage = null;
+    }, err => this.errorMessage = err);
+  }
 
   onPreviousClicked() {
     this.canActivateButtonPrevious = false;
