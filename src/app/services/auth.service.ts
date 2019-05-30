@@ -37,10 +37,10 @@ export class AuthService {
 
       let tokenExpired: boolean = this.jwtHelper.isTokenExpired(JSON.stringify(token));
       //console.log("tokenExpired was:" + tokenExpired);
-      if(!tokenExpired){
+      if (!tokenExpired) {
         returnVal = true;
       }
-    } 
+    }
     return returnVal;
   }
 
@@ -56,9 +56,9 @@ export class AuthService {
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
-      if(error.status === 401){
+      if (error.status === 401) {
         errorString = 'Unauthorized';
-      } else if(error.status === 500){
+      } else if (error.status === 500) {
         errorString = 'Internal Server Error';
       }
     }

@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router }      from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-route',
+  templateUrl: './login-route.component.html',
+  styleUrls: ['./login-route.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginRouteComponent implements OnInit {
 
   private loginFailed: boolean;
   private errorMessage: string;
@@ -37,9 +35,9 @@ export class LoginComponent implements OnInit {
     this.loginFailed = false;
     this.jwtHelper = new JwtHelperService();
     let isLoggedIn = this.authService.isLoggedIn();
-    if(isLoggedIn){
+    if (isLoggedIn) {
       this.router.navigateByUrl('/events');
-    } 
+    }
   }
 
 
@@ -48,8 +46,8 @@ export class LoginComponent implements OnInit {
     console.log(this.loginFormParent.get('usernameForm').value, this.loginFormParent.get('passwordForm').value);
     this.authService.login(this.loginFormParent.get('usernameForm').value, this.loginFormParent.get('passwordForm').value).subscribe((res) => {
       localStorage.setItem('token', res.token);
-      if(this.authService.isLoggedIn()) {
-        let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/events';        
+      if (this.authService.isLoggedIn()) {
+        let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/events';
         this.router.navigateByUrl(redirect);
       }
     }, (err) => {
@@ -58,6 +56,3 @@ export class LoginComponent implements OnInit {
     });
   }
 }
-
-
-

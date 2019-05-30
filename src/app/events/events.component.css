@@ -1,3 +1,40 @@
+.search-container{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.search-form{
+    padding: 1%;
+    box-shadow: 0 5px 8px 0 #E9573D, 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.search-form h3{
+    text-align: center;
+    color: #333;
+}
+.search-container form{
+    padding: 1%;
+}
+.form-control {
+    border: thin solid #E9573D;
+}
+.search-container .btn
+{
+    margin-top: 1%;
+    margin-left: 25%;
+	font-weight: 600;
+    color: #fff;
+    background-color: #E9573D;
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.search-container .btn:active:focus
+{
+    background-color: rgb(73, 18, 9);    
+}
 .list-group-item {
     box-shadow: 0 5px 8px 0 #E9573D, 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }

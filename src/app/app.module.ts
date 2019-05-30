@@ -5,25 +5,27 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventsComponent } from './events/events.component';
-import { EventDetailsComponent } from './event-details/event-details.component';
-import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { MatNativeDateModule } from '@angular/material';
-import { CreateEventComponent } from './create-event/create-event.component';
 import { EventComponent } from './event/event.component';
+import { EventsComponent } from './events/events.component';
+import { EventsRouteComponent } from './events-route/events-route.component';
+import { EventRouteComponent } from './event-route/event-route.component';
+import { CreateEventRouteComponent } from './create-event-route/create-event-route.component';
+import { LoginRouteComponent } from './login-route/login-route.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,   
+    EventComponent,
     EventsComponent,
-    EventDetailsComponent,
-    LoginComponent,
-    CreateEventComponent,
-    EventComponent
+    EventsRouteComponent,
+    EventRouteComponent,
+    CreateEventRouteComponent,
+    LoginRouteComponent
   ],
   imports: [
     BrowserModule,

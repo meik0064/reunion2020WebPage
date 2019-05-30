@@ -1,15 +1,15 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { Event } from "../models/event";
-import { EventService } from "../services/event.service";
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Event } from "../models/event";
+import { EventService } from "../services/event.service";
 
 @Component({
-  selector: 'app-event-details',
-  templateUrl: './event-details.component.html',
-  styleUrls: ['./event-details.component.css']
+  selector: 'app-event-route',
+  templateUrl: './event-route.component.html',
+  styleUrls: ['./event-route.component.css']
 })
-export class EventDetailsComponent implements OnInit {
+export class EventRouteComponent implements OnInit {
   private event: Event;
   private imgURL: string
 

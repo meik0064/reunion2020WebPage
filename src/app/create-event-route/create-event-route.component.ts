@@ -5,17 +5,17 @@ import { ReviewEvent } from "../models/review-event";
 import { EventService } from "../services/event.service";
 
 @Component({
-  selector: 'app-create-event',
-  templateUrl: './create-event.component.html',
-  styleUrls: ['./create-event.component.css']
+  selector: 'app-create-event-route',
+  templateUrl: './create-event-route.component.html',
+  styleUrls: ['./create-event-route.component.css']
 })
-export class CreateEventComponent implements OnInit {
+export class CreateEventRouteComponent implements OnInit {
 
   private event: ReviewEvent;
 
   eventForm = new FormGroup({
     titleFormControl: new FormControl('', [Validators.required]),
-    dateFormControl: new FormControl('', [Validators.required]),
+    dateFormControl: new FormControl(new Date('2020/01/01'), [Validators.required]),
     descriptionFormControl: new FormControl('', [Validators.required]),
     locationFormControl: new FormControl('', [Validators.required]),
     targetGroupMinFormControl: new FormControl('', [Validators.required]),
@@ -80,4 +80,5 @@ export class CreateEventComponent implements OnInit {
   get location() { return this.eventForm.get('locationFormControl'); }
   get targetGroupMin() { return this.eventForm.get('targetGroupMinFormControl'); }
   get targetGroupMax() { return this.eventForm.get('targetGroupMaxFormControl'); }
+
 }
