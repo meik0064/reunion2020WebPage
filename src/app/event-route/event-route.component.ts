@@ -10,6 +10,8 @@ import { EventService } from "../services/event.service";
   styleUrls: ['./event-route.component.css']
 })
 export class EventRouteComponent implements OnInit {
+  private isLoading: boolean;
+  private errorMessage: string;
   private event: Event;
   private imgURL: string
 
@@ -20,8 +22,17 @@ export class EventRouteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.imgURL = 'https://i.ytimg.com/vi/9tzJO7ATcjM/maxresdefault.jpg';
-    this.eventService.getEvent(this.route.snapshot.paramMap.get('id')).subscribe(event => this.event = event);
+    this.eventService.getEvent(this.route.snapshot.paramMap.get('id')).subscribe(event => {
+      this.errorMessage = null;
+      this.event = event;
+      this.isLoading = false;
+    }, err => {
+      this.event = null;
+      this.isLoading = false;
+      this.errorMessage = err;      
+    });
   }
 
   goBack(): void {

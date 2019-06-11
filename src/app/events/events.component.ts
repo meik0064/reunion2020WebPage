@@ -16,13 +16,14 @@ export class EventsComponent implements OnInit {
   @Input() public inputSearchDate: Date;
   @Input() public inputDecending: boolean;
   @Output() searchEmitter: EventEmitter<{ search: string, date: Date, descending: boolean }>;
+  @Output() pageNextPrevEmitter: EventEmitter<boolean>;
 
   private searchString: string;
   private searchDate: Date;
   private descending: boolean;
 
-  private canActivateButtonPrevious: boolean;
-  private canActivateButtonNext: boolean;
+  private btnNextDisabled = false;
+  private btnPreviousDisabled = false;
 
   searchForm = new FormGroup({
     searchStringForm: new FormControl(this.searchString, []),
@@ -35,15 +36,20 @@ export class EventsComponent implements OnInit {
   get descendingForm() { return this.searchForm.get('descendingForm'); }  
 
   constructor(private eventService: EventService) {
-    this.searchEmitter = new EventEmitter();    
-    this.canActivateButtonPrevious = false;
-    this.canActivateButtonNext = true;
+    this.searchEmitter = new EventEmitter(); 
+    this.pageNextPrevEmitter = new EventEmitter();   
   }
 
-  ngOnInit() {     
+  ngOnInit() {   
     this.searchStringForm.setValue(this.inputSearchString);
     this.searchDateForm.setValue(this.inputSearchDate);
-    this.descendingForm.setValue(this.inputDecending);   
+    this.descendingForm.setValue(this.inputDecending);  
+    if(this.page <= 1){
+      this.btnPreviousDisabled = true;
+    } 
+    if(this.page >= this.pages[this.pages.length - 1]){
+      this.btnNextDisabled = true;
+    }
   }
 
   onSearch() {
@@ -58,34 +64,9 @@ export class EventsComponent implements OnInit {
     this.searchEmitter.emit(toEmit);
   }
 
-
-
-
-  /*  onPreviousClicked() {
-      this.canActivateButtonPrevious = false;
-      this.page -= 1;
-      this.getEventsMultiPage(this.page);
-      if (this.page >= 1) {
-        this.canActivateButtonPrevious = true;
-        this.canActivateButtonNext = true;
-      }
-      console.log(this.page + "   " + this.events.length + "       previousclicked");
-    }
-    onNextClicked() {
-      this.canActivateButtonNext = false;
-      this.page += 1;
-      this.getEventsMultiPage(this.page);
-      console.log(this.events.length + "       nextclicked");
-      if (this.events.length >= 3) {
-        this.canActivateButtonNext = true;
-        this.canActivateButtonPrevious = true;
-      }
-      console.log(this.page + "   " + this.events.length + "       nextclicked");
-    }
-  
-    getEventsMultiPage(page: number) {
-      this.eventService.getEventsMultiPage(this.events.length * page).subscribe(events => this.events = events);
-    }
-    */
-
+  pageNextPrevClick(val){
+    // next will emit true
+    // previous will emit false
+    this.pageNextPrevEmitter.emit(val);
+  }
 }

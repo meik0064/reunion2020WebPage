@@ -55,7 +55,7 @@
               <div class="col-2 mt-3 text-center" *ngIf="!isLoggedIn()">
                 <p class="lead" style="padding-top:16px;">
                   <a class="text-light text-decoration-none" routerLink="/createEvent"><img
-                      style="max-width:32;max-height:64px"  />Host Event</a>
+                      style="max-width:32;max-height:64px" />Host Event</a>
                 </p>
               </div>
 
@@ -77,7 +77,8 @@
                 alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
           </div>
 
-          <div class="col-8 text-center ml-3" style="display:block;padding:1rem;width:380px;margin:0 auto" *ngIf="innerWidth < 1200">
+          <div class="col-8 text-center ml-3" style="display:block;padding:1rem;width:380px;margin:0 auto"
+            *ngIf="innerWidth < 1200">
             <!--</div>style="display:block;padding:1rem;width:380px;margin:0 auto"-->
 
             <a routerLink="/events"><img src="assets/img/genforening-logo-small.svg"
@@ -93,19 +94,29 @@
           </div>
         </div>
 
-
         <router-outlet></router-outlet>
-
 
       </div>
 
 
     </mat-sidenav-content>
   </mat-sidenav-container>
-  <mat-toolbar class="footer">
-    <div class="col-sm-12">
-      <p class="lead text-center alert alert-danger">Footer</p>
-    </div>
+  <mat-toolbar class="footer" *ngIf='innerWidth >= 775'>
+    <mat-toolbar-row>
+      <a href="/">
+        <img src="../assets/img/facebook.svg" width="64px" height="64px" />
+      </a>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <a href="/">
+        <img src="../assets/img/twitter.svg" width="64px" height="64px" />
+      </a>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <a href="/">
+        <img (click)='doSomething()' src="../assets/img/instagram.svg" width="64px" height="64px" />
+      </a>
+    </mat-toolbar-row>
   </mat-toolbar>
 
 </ng-container>

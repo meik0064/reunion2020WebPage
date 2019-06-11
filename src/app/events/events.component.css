@@ -38,3 +38,19 @@
 .list-group-item {
     box-shadow: 0 5px 8px 0 #E9573D, 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
+.prev-next-btn {   
+	font-weight: 600;
+    color: #fff;
+    background-color: #E9573D;
+    border-radius: 1rem;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+.prev-next-btn:active:focus {   
+	background-color: rgb(73, 18, 9);    
+}
+.prev-next-btn:disabled {   
+    background-color: rgb(136, 122, 120);    
+    cursor: default;
+}

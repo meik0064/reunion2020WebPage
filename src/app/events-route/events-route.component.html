@@ -9,4 +9,4 @@
   </div>
 </div>
 <app-events [events]='events' [page]='page' [pages]='pages' [inputSearchString]='searchString' [inputSearchDate]='searchDate'
-  [inputDecending]='descending' (searchEmitter)='search($event)' *ngIf='events'></app-events>
+  [inputDecending]='descending' (searchEmitter)='search($event)' (pageNextPrevEmitter)='pageNextPrevClick($event)' *ngIf='events'></app-events>

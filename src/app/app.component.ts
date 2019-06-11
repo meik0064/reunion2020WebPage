@@ -38,6 +38,10 @@ export class AppComponent implements OnInit {
     return loggedIn;
   }
 
+  doSomething(){
+    console.log('did something');
+  }
+
   logOut(){
     localStorage.removeItem('token');
   }
