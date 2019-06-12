@@ -10,7 +10,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 })
 
 export class AuthService {
-  private loginUrl = 'https://genforeningen-api.azurewebsites.net/admins/login';
+  private loginUrl = 'https://genforeningen-api-website.azurewebsites.net/admins/login';
   private jwtHelper: JwtHelperService;
 
   public redirectUrl: string;

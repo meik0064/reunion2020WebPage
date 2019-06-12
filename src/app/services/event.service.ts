@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
   providedIn: 'root'
 })
 export class EventService {
-  private eventsURL = 'https://genforeningen-api.azurewebsites.net/events';
+  private eventsURL = 'https://genforeningen-api-website.azurewebsites.net/events';
 
   constructor(private httpClient: HttpClient) { }
 
