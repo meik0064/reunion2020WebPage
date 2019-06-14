@@ -8,5 +8,10 @@
     <p class="lead text-center alert alert-info">Fetching events from backend, hold on....</p>
   </div>
 </div>
-<app-events [review]='false' [events]='events' [page]='page' [pages]='pages' [inputSearchString]='searchString' [inputSearchDate]='searchDate'
+<div class="row mt-3">
+  <div class="col-12 text-center">
+      <h1 class="display-4">Review</h1>
+  </div>
+</div>
+<app-events [review]='true' [events]='events' [page]='page' [pages]='pages' [inputSearchString]='searchString' [inputSearchDate]='searchDate'
   [inputDecending]='descending' (searchEmitter)='search($event)' (pageNextPrevEmitter)='pageNextPrevClick($event)' *ngIf='events'></app-events>

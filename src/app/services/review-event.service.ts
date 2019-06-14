@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Event } from '../models/event';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular/common/http';
+import { throwError, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { ReviewEvent } from '../models/review-event';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EventService {
-  private eventsURL = 'https://genforeningen-api-website.azurewebsites.net/events';
+export class ReviewEventService {
+  private eventsURL = 'https://genforeningen-api-website.azurewebsites.net/review-events';
 
   constructor(private httpClient: HttpClient) { }
+
+  postEvent(event): Observable<Object> {
+
+    //TODO: Upload image and update imageId   
+    
+    return this.httpClient.post(this.eventsURL, event, { withCredentials: true }).pipe(catchError(this.handleError));
+  }
 
   getEventAmount(searchString, date, descending): Observable<number> {
     let params = new HttpParams();
@@ -25,16 +32,18 @@ export class EventService {
       }
     }
     
-    return this.httpClient.get<number>(this.eventsURL + '/count', { params: params, withCredentials: true }).pipe(catchError(this.handleError));
+    let httpHeaders = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.httpClient.get<number>(this.eventsURL + '/count', { headers: httpHeaders, params: params, withCredentials: true }).pipe(catchError(this.handleError));
   }
 
-  getEvent(id: string): Observable<Event> {
+  getEvent(id: string): Observable<ReviewEvent> {
     // TODO: fetch image 
     console.log(this.eventsURL + `/${id}`);
-    return this.httpClient.get<Event>(this.eventsURL + `/${id}`, { withCredentials: true }).pipe(catchError(this.handleError));
+    let httpHeaders = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.httpClient.get<ReviewEvent>(this.eventsURL + `/${id}`, { headers: httpHeaders, withCredentials: true }).pipe(catchError(this.handleError));
   }
 
-  getEvents(position, searchString, date, descending): Observable<Event[]> {
+  getEvents(position, searchString, date, descending): Observable<ReviewEvent[]> {
     let params = new HttpParams();
     params = params.set('position', position);
 
@@ -47,7 +56,8 @@ export class EventService {
         params = params.set('descending', descending);
       }
     }
-    return this.httpClient.get<Event[]>(this.eventsURL, { params: params, withCredentials: true }).pipe(catchError(this.handleError));
+    let httpHeaders = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.httpClient.get<ReviewEvent[]>(this.eventsURL, { headers: httpHeaders, params: params, withCredentials: true }).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -71,4 +81,5 @@ export class EventService {
     // return an observable with a user-facing error message
     return throwError(errorString);
   }
+ 
 }

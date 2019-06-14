@@ -1,7 +1,7 @@
 export class ReviewEvent {
     _id: string;
     title: string;
-    date: Date;
+    date: string;
     description: string;
     location: string;
     targetGroupMin: Number;

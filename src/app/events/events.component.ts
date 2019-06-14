@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EventService } from '../services/event.service';
 import { Event } from "../models/event";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -9,6 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
+  @Input() public review: boolean;
   @Input() public events: Event[];
   @Input() public page: number;
   @Input() public pages: Array<number>;
@@ -35,7 +37,7 @@ export class EventsComponent implements OnInit {
   get searchDateForm() { return this.searchForm.get('searchDateForm'); }
   get descendingForm() { return this.searchForm.get('descendingForm'); }  
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService, private router: Router) {
     this.searchEmitter = new EventEmitter(); 
     this.pageNextPrevEmitter = new EventEmitter();   
   }
@@ -50,6 +52,14 @@ export class EventsComponent implements OnInit {
     if(this.page >= this.pages[this.pages.length - 1]){
       this.btnNextDisabled = true;
     }
+  }
+
+  goToEvent(id){
+    if(this.review) {
+      this.router.navigate(['/review-events/' + id]);
+    } else {
+      this.router.navigate(['/events/' + id]);
+    }    
   }
 
   onSearch() {

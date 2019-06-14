@@ -12,7 +12,7 @@
       <br>
       <div class="col-sm-12">
         <p class="h4">
-          <a routerLink='/' class="text-light text-decoration-none">
+          <a routerLink='review-events' (click)="toggleSideNav()" class="text-light text-decoration-none">
             Review event submissions
           </a>
         </p>
@@ -52,12 +52,6 @@
                       style="max-width:32;max-height:64px" src="assets/img/login.png" /></a>
                 </p>
               </div>
-              <div class="col-2 mt-3 text-center" *ngIf="!isLoggedIn()">
-                <p class="lead" style="padding-top:16px;">
-                  <a class="text-light text-decoration-none" routerLink="/createEvent"><img
-                      style="max-width:32;max-height:64px" />Host Event</a>
-                </p>
-              </div>
 
               <div class="col-4 ml-3" *ngIf="isLoggedIn()">
                 <div id="nav-icon1" [className]="isSideNavOpen ? 'open' : ''" (click)="toggleSideNav()">
@@ -67,21 +61,28 @@
                 </div>
               </div>
 
+              <div class="col-3 mt-3 text-center" *ngIf="innerWidth >= 1200">
+                <p class="lead" style="padding-top: 16px;">
+                  <a class="text-light text-decoration-none" routerLink="/create-event"><img
+                      style="max-width:32;max-height:64px" />Host Event</a>
+                </p>
+              </div>
+
             </div>
           </div>
 
 
           <div class="col-6 text-center mt-3 mb-3" style="display:block;padding:1rem;width:380px;margin:0 auto"
             *ngIf="innerWidth >= 1200">
-            <a routerLink="/events"><img style="max-width:500px;max-height:500px" src="assets/img/genforening-logo.svg"
+            <a href="/"><img style="max-width:500px;max-height:500px" src="assets/img/genforening-logo.svg"
                 alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
           </div>
 
-          <div class="col-8 text-center ml-3" style="display:block;padding:1rem;width:380px;margin:0 auto"
+          <div class="col-8 text-center" style="display:block;padding:1rem;width:380px;margin:0 auto"
             *ngIf="innerWidth < 1200">
             <!--</div>style="display:block;padding:1rem;width:380px;margin:0 auto"-->
 
-            <a routerLink="/events"><img src="assets/img/genforening-logo-small.svg"
+            <a href="/"><img style="max-width:500px;max-height:500px" src="assets/img/genforening-logo-small.svg"
                 alt="Genforeningen 2020 - Velkommen til Genforeningen 2020" /></a>
           </div>
 

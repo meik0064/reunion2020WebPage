@@ -5,7 +5,7 @@
       <!-- style="margin:0 auto; background-color: lightgray; outline: outset #E9573D"-->
 
       <div class="col-sm-12 event">
-          <form [formGroup]="eventForm">
+          <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
               <h1>Host an event</h1>
               <small>The event will need to be approved</small>
               <br>
@@ -16,37 +16,76 @@
               <div>
                   <div class="row">
                       <div class="col-sm-8 col-lg-6 offset-sm-2 offset-lg-3" style="margin: 0 auto">
+
                           <label>Title</label>
                           <br>
-                          <input formControlName="titleFormControl" class="form-control" [(ngModel)]="event.title"
-                              placeholder="Input Title" type="text" />
+                          <input type="text" class="form-control" placeholder="Title" formControlName="titleFormControl" />
                           <br>
+
+
+                          
                           <label for="eventDescription">Description</label>
                           <br>
                           <textarea formControlName="descriptionFormControl" class="form-control" rows="3" cols="30"
-                              id="eventDescription" [(ngModel)]="event.description"
+                              id="eventDescription" 
                               placeholder="Input Description"> </textarea>
                           <br>
-                          <label> Target Group Minimum</label>
-                          <br>
+
+                          <label> Target Group Minimum Age</label>
+                          <br>                          
                           <input formControlName="targetGroupMinFormControl" class="form-control"
-                              [(ngModel)]="event.targetGroupMin" placeholder="Input Number" type="number" />
+                               placeholder="Input Number" type="number" />
                           <br>
-                          <label> Target Group Maximum</label>
+
+                          <label> Target Group Maximum Age</label>
                           <br>
                           <input formControlName="targetGroupMaxFormControl" class="form-control"
-                              [(ngModel)]="event.targetGroupMax" placeholder="Input Number" type="number" />
+                              placeholder="Input Number" type="number" />
                           <br>
+
                           <label> Location </label>
                           <br>
                           <input formControlName="locationFormControl" class="form-control"
-                              [(ngModel)]="event.location" placeholder="Input Location" type="text" />
+                              placeholder="Input Location" type="text" />
                           <br>
-                          <label> Date & Time </label>
+
+                          <label> Date </label>
                           <br>
-                          <input formControlName="dateFormControl" class="form-control" [(ngModel)]="event.date"
-                              placeholder="Input Date & Time" type="datetime-local" />
+                          <input formControlName="dateFormControl" class="form-control" 
+                              placeholder="Input Date" type="date" />
                           <br>
+                          
+                          <label> Event Start-time </label>
+                          <br>
+                          <input formControlName="startTimeFormControl" class="form-control" 
+                              placeholder="Input Time of Event Start" type="time" />
+                          <br>
+
+                          <br>
+                          <label> Contact Name </label>
+                          <br>
+                          <input formControlName="contactNameFormControl" class="form-control" 
+                              placeholder="Name" type="text" />
+                          <br>
+                         
+                          <label> Contact E-mail </label>
+                          <br>
+                          <input formControlName="contactEmailFormControl" class="form-control" 
+                              placeholder="E-mail" type="text" />
+                          <br>
+                        
+                          <label> Contact Phone </label>
+                          <br>
+                          <input formControlName="contactPhoneFormControl" class="form-control" 
+                              placeholder="Phone-No" type="text" />
+                          <br>
+
+                          <label> External signup link: (in case you want to manage signups, tickets and the like for your event) </label>
+                          <br>
+                          <input formControlName="externLinkFormControl" class="form-control" 
+                              placeholder="Registration link" type="text" />
+                          <br>
+
                           <button class="btn" [disabled]="eventForm.invalid">Submit Event</button>
                           <br>
                           <small class="small-text-below-button">Button will activate once all fields are properly
@@ -57,6 +96,21 @@
                   </div>
               </div>
           </form>
+          <div class="row mt-1" *ngIf='errorMessage'>
+            <div class="col-sm-12">
+              <p class="lead text-center alert alert-danger">{{errorMessage}}</p>
+            </div>
+          </div>
+          <div class="row mt-1" *ngIf='isLoading'>
+            <div class="col-sm-10 offset-sm-1">
+              <p class="lead text-center alert alert-info">Posting event, hold on....</p>
+            </div>
+          </div>
+          <div class="row mt-1" *ngIf='successMessage'>
+            <div class="col-sm-10 offset-sm-1">
+              <p class="lead text-center alert alert-info">{{successMessage}}</p>
+            </div>
+          </div>
 
           <br>
           <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
@@ -88,10 +142,30 @@
           </div>
           <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
               <div *ngIf="date.errors.required">
-                  Date & Time is required.
+                  Date is required.
               </div>
           </div>
+          <div *ngIf="startTime.invalid && (startTime.dirty || startTime.touched)" class="alert alert-danger">
+            <div *ngIf="startTime.errors.required">
+                Start Time is required.
+            </div>
+        </div>
+        <div *ngIf="contactName.invalid && (contactName.dirty || contactName.touched)" class="alert alert-danger">
+            <div *ngIf="contactName.errors.required">
+                Contact name is required.
+            </div>
+        </div>
+        <div *ngIf="contactEmail.invalid && (contactEmail.dirty || contactEmail.touched)" class="alert alert-danger">
+            <div *ngIf="contactEmail.errors.required">
+                Contact email is required.
+            </div>
+        </div>
+        <div *ngIf="contactPhone.invalid && (contactPhone.dirty || contactPhone.touched)" class="alert alert-danger">
+            <div *ngIf="contactPhone.errors.required">
+                Contact phone is required.
+            </div>
+        </div>
       </div>
   </div>
 </div>
-<app-event [event]='event' [imgURL]='imgURL'></app-event>
+<app-event [event]='previewEvent' [imgURL]='imgURL'></app-event>

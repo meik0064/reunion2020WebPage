@@ -16,6 +16,8 @@ import { EventsRouteComponent } from './events-route/events-route.component';
 import { EventRouteComponent } from './event-route/event-route.component';
 import { CreateEventRouteComponent } from './create-event-route/create-event-route.component';
 import { LoginRouteComponent } from './login-route/login-route.component';
+import { ReviewEventsRouteComponent } from './review-events-route/review-events-route.component';
+import { ReviewEventRouteComponent } from './review-event-route/review-event-route.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { LoginRouteComponent } from './login-route/login-route.component';
     EventsRouteComponent,
     EventRouteComponent,
     CreateEventRouteComponent,
-    LoginRouteComponent
+    LoginRouteComponent,
+    ReviewEventsRouteComponent,
+    ReviewEventRouteComponent
   ],
   imports: [
     BrowserModule,
